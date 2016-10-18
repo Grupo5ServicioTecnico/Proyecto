@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<OBJECT  data="barra.html" width="100%" height="10%">
+	</object>
+	<title>Buscar Cliente</title>
+	<table>
+		<tr>
+				<td>Buscar Cliente</td>
+				<td><input id="search_client" type="text" name="search_client"/></td>
+		</tr>
+				<tr><td align="right">
+					<button type="button" id="search" name="button">Buscar</button>
+					<input type="button" id="add" name="button2" value="agregar" onclick="location.href='Assets/phps/cliente_add.php'"></input>
+
+		</td></tr>
+	</table>
+	<table border="1"width="100%" >
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Rut</th>
+				<th>Celular</th>
+				<th>correo</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td id="td-id"></td>
+				<td id="td-nombre"></td>
+				<td id="td-apellido"></td>
+				<td id="td-rut"></td>
+				<td id="td-celular"></td>
+				<td id="td-correo"></td>
+			</tr>
+		</tbody>
+	</table>
+	<script type="text/javascript" src="Assets/js/jquery-1.12.4.min.js">
+	</script>
+	<script type="text/javascript">
+	$( document ).ready(function() {
+		$('#search').click(function(event){
+			var client = $("#search_client").val();
+			$.ajax({
+			  method: "POST",
+			  url: "Assets/phps/buscar_emp.php",
+				dataType: 'json',
+			  data: { search_client: client }
+			}).done(function( msg ) {
+			    console.log(msg.id );
+					$("#td-id").text(msg.id)
+					$("#td-nombre").text(msg.nombre)
+					$("#td-apellido").text(msg.apellido)
+					$("#td-rut").text(msg.rut)
+					$("#td-celular").text(msg.telefono)
+					$("#td-correo").text(msg.correo)
+			  });
+		})
+	});
+	</script>
+</body>
+</html>
