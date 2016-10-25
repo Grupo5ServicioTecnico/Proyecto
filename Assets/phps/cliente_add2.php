@@ -24,6 +24,18 @@ if(trim($_POST["rut"]) != "" && trim($_POST["name"]) != ""  && trim($_POST["last
     if(!pg_query('INSERT INTO usuarios (usu_rut, usu_nombre, usu_apellido, usu_telefono, usu_correo) VALUES (\''.$rut.'\',\''.$nombre.'\',\''.$apellido.'\',\''.$phone.'\',\''.$email.'\')')){
       echo "error";
     }else {
+
+      $consul = pg_query('SELECT usu_id FROM usuarios ORDER BY usu_id DESC LIMIT 1');
+      $registros= pg_num_rows($consul);
+     for ($i=0;$i<$registros;$i++)
+     {
+      $row = pg_fetch_array ( $consul,$i );
+      $id = array(
+        'id' => $row["usu_id"],
+      );
+      }
+      //echo $row["usu_id"];
+      pg_query('INSERT INTO clientes (usu_id) VALUES (\''.$row["usu_id"].'\')');
       echo "Usuario registrado";
     }
   }

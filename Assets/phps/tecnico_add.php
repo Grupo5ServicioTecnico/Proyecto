@@ -18,7 +18,7 @@ if (!isset($_SESSION["k_username"])) {
 	</object>
 <div class="cliente_add">
 <form align="center" action="cliente_add2.php" method="post">
-	<div class="lb-header"><h2>Ingreso Cliente </h2></div>
+	<div class="lb-header"><h2>Ingreso Tecnico </h2></div>
 	<div class="u-form-group" title="(sin puntos ni guion)">
 		<label class="title"></label>
 		<div class="item-cont">
@@ -55,7 +55,7 @@ if (!isset($_SESSION["k_username"])) {
 		</div>
 	</div>
 	<div class="u-form-group">
-		<input type="submit"name="enviar" value="Agregar"/>
+		<input type="submit"name="enviar" value="Ingresar"/>
 	</div>
 </form>
 </div>
