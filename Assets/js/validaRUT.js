@@ -1,6 +1,15 @@
+function dv(T) {
+    var M=0,S=1;
+    for(;T;T=Math.floor(T/10))
+      S=(S+T%10*(9-M++%6))%11;
+    console.log(S?S-1:'k');
+    return S?S-1:'k';
+
+  }
+
 function checkRut(rut) {
     // Despejar Puntos
-    var valor = rut.value.replace('.','');
+    var valor = rut.replace('.','');
     // Despejar Guión
     valor = valor.replace('-','');
 
@@ -9,7 +18,7 @@ function checkRut(rut) {
     dv = valor.slice(-1).toUpperCase();
 
     // Formatear RUN
-    rut.value = cuerpo + '-'+ dv
+    rut = cuerpo + '-'+ dv
 
     // Si no cumple con el mínimo ej. (n.nnn.nnn)
     if(cuerpo.length < 7) { rut.setCustomValidity("RUT Incompleto"); return false;}
@@ -40,8 +49,9 @@ function checkRut(rut) {
     dv = (dv == 0)?11:dv;
 
     // Validar que el Cuerpo coincide con su Dígito Verificador
-    if(dvEsperado != dv) { rut.setCustomValidity("RUT Inválido"); return false; }
+    if(dvEsperado != dv) { console.log();("RUT Inválido"); return false; }
 
     // Si todo sale bien, eliminar errores (decretar que es válido)
-    rut.setCustomValidity('');
+   console.log("valido");
+
 }

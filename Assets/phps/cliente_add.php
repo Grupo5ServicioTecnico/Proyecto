@@ -9,61 +9,98 @@ if (!isset($_SESSION["k_username"])) {
 <head>
 	<meta charset="utf-8" />
 	<title>Ingreso Cliente</title>
-	<link rel="stylesheet" href="../css/login-normalize.css">
-	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
-	<link rel="stylesheet" href="../css/cliente_add.css">
+	<link rel="stylesheet" href="../css/formalize.css">
 </head>
-<body class="formulario">
-	<OBJECT  data="../../barra.html" width="100%" height="10%">
+<body>
+	<OBJECT  data="../../barra.html" width="100%" height="50px" border="2px">
 	</object>
-<div class="cliente_add">
-<form align="center" action="cliente_add2.php" method="post">
-	<div class="lb-header"><h2>Ingreso Cliente </h2></div>
-	<div class="u-form-group" title="(sin puntos ni guion)">
-		<label class="title"></label>
-		<div class="item-cont">
-			<input class="large" type="rut" min="12" max="12" name="rut" oninput="checkRut(this)"placeholder="RUT" value="" required=""/>
-			<script> src="../js/validarRUT.js" </script>
-			<span class="icon-place"></span>
+	<div id="cabezera">
+		<form align="center" action="cliente_add2.php" method="post">
+			<h2>Ingreso Cliente </h2>
+			<hr width=100% align="left"></hr>
+			<!--Div con formulario de ingreso de datos -->
+			<div id="formulario">
+				<input id="rut" placeholder="Rut, ej: 11.111.111-1" type="rut" maxlength="12" name="rut" onblur="checkRut(this.value)" required=""/>
+				<div id="msgUsuario"></div>
+			</div>
+			<table align="center">
+				<tr>
+					<td>
+						<label>Nombre</label>
+					</td>
+					<td>
+						<div id="Nombre">
+								<input type="name" name="name" required=""/>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Apellido</label>
+					</td>
+					<td>
+						<div id="Apellido">
+								<input type="lastname" name="lastname" required=""/>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Celular</label>
+					</td>
+					<td>
+						<div id="Celular">
+							<input class="large" type="phone"  maxlength="24" name="phone" value="" required=""/>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Correo</label>
+					</td>
+					<td>
+						<div class="item-cont">
+							<input class="large" type="email" name="email" required=""/>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<div class="button">
+						<button type="submit" id="search" name="enviar">
+							<img src="../images/Add.png"><b> Agregar</b></button>
+					</div>
+				</tr>
+			</table>
+		</form>
 		</div>
-	</div>
-	<div class="u-form-group">
-		<label class="title"></label>
-		<span class="nameFirst">
-			<input placeholder="Name First" type="name" size="8" name="name" required=""/>
-			<span class="icon-place"></span>
-		</span>
-	</div>
-	<div class="u-form-group">
-		<span class="nameLast">
-			<input placeholder="Name Last" type="lastname" size="14" name="lastname" required=""/>
-			<span class="icon-place"></span>
-		</span>
-	</div>
-	<div class="u-form-group">
-		<label class="title"></label>
-		<div class="item-cont">
-			<input class="large" type="phone"  maxlength="24" name="phone" placeholder="Phone" value="" required=""/>
-			<span class="icon-place"></span>
-		</div>
-	</div>
-	<div class="u-form-group">
-		<label class="title"></label>
-		<div class="item-cont">
-			<input class="large" type="email" name="email" value="" placeholder="Email"required=""/>
-			<span class="icon-place"></span>
-		</div>
-	</div>
-	<div class="u-form-group">
-		<input type="submit"name="enviar" value="Agregar"/>
-	</div>
-</form>
-</div>
-<script type="text/javascript" src="Assets/js/jquery-1.12.4.min.js">
-</script>
-<script type="text/javascript">
-
-</script>
-<p class="frmd">
-</body>
+		<script type="text/javascript" src="../js/jquery-1.12.4.min.js">
+		</script>
+		<script src="../js/validaRUT.js"></script>
+		</script>
+		<!--Script que verifica si el usuario esta registrado
+		<script type="text/javascript">
+			$('#rut').blur( function(){
+				if($('#rut').val()!= ""){
+						$.ajax({
+								type: "POST",
+								url: "validar.php",
+								data: "rut="+$('#rut').val(),
+								beforeSend: function(){
+									$('#msgUsuario').html('<img src="../images/loader.gif"/> verificando');
+								},
+								success: function( respuesta ){
+									console.log(respuesta);
+									if(respuesta == '0')
+										$('#msgUsuario').html('<img src="../images/Cancel.png"/>');
+									else
+										$('#msgUsuario').html('<img src="../images/Ok.png"/>');
+								}
+						});
+				}
+			});
+		</script> -->
+		<p class="frmd">
+	</body>
 </html>

@@ -14,7 +14,7 @@ if (!isset($_SESSION["k_username"])) {
 	<link rel="stylesheet" href="../css/cliente_add.css">
 </head>
 <body class="formulario">
-	<OBJECT  data="../../barra.html" width="100%" height="10%">
+	<OBJECT  data="../../barra.html" width="100%" height="50px" border="2px">
 	</object>
 <div class="cliente_add">
 <form align="center" action="cliente_add2.php" method="post">

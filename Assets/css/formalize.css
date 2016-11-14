@@ -1,0 +1,96 @@
+body{
+  background-color: #1cbb9b;
+}
+body h2{
+  color: black;
+}
+/*diseño div cabezera*/
+#cabezera{
+  background-color: white;
+  margin: 10px 0px 0px 0px;
+  border-style: solid;
+  border-width: 2px;
+}
+/*diseño opciones buscar*/
+#buscar{
+  margin-top: 10px;
+}
+#buscar p{
+  color: black;
+  text-transform: capitalize;
+}
+#buscar input{
+  margin-left: 10px;
+}
+/* Diseño boton search*/
+#search{
+  background-color:#AAEEE1;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 15px;
+}
+#search img{
+  width: 32px;
+  height: 32px;
+}
+#search b{
+  vertical-align: 40%;
+}
+/*div opciones contiene los botones de update,delete y add*/
+#opciones{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.centro{
+  background-color: white;
+  margin-top: 10px;
+}
+/*diseño boton add*/
+#add{
+  background-color:#AAEEE1;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 15px;
+}
+#add img{
+  width: 32px;
+  height: 32px;
+}
+#add b{
+  vertical-align: 40%;
+}
+/*diseño boton update*/
+#update{
+  background-color:#AAEEE1;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 15px;
+}
+#update img{
+  width: 32px;
+  height: 32px;
+}
+#update b{
+  vertical-align: 50%;
+}
+/*diseño boton delete*/
+#delete{
+  background-color:#AAEEE1;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 15px;
+}
+#delete img{
+  width: 32px;
+  height: 32px;
+}
+#delete b{
+  vertical-align: 40%;
+}
+#formulario{
+  align-items: center;
+}
