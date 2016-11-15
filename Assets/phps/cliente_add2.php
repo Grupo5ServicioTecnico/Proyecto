@@ -1,13 +1,34 @@
 <?php
+/**
+* Php en el cual se agrega un usuario al sistema
+*
+* En este PHP se agrega la funcion de agregar usuarios al sistema, para eso, el sistema
+* busca en el archivo config.php las llaves para ingresar al sistema.
+* primero optiene informacion de los formularios en formato AJAX
+*
+* 1. Verifica que los datos en el sistema no estes ingresados previamente
+* 2. Verifica que los datos sean validos, validados en el html correspondiente
+* 3. Verifica que los datos no sean vacios
+* 4. Ingresa los datos al sistema
+**/
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+/**
+* Crea la instancia de coneccion a la base de datos
+*@author Drexx
+*@return Inicia coneccion a la base de datos, si no se pudo, muestra un mensaje de error :(
+*@param Posee como parametros el archivo db.conf.php ubicado en la carpeta config
+*/
 require_once("config/db.conf.php");
 
 
 $db = "host=$host port=$port dbname=$dbname user=$username password=$password";
 $cnx = pg_connect($db) or die ('connection failed'. pg_last_error());
 session_start();
+
+
 
 if(trim($_POST["rut"]) != "" && trim($_POST["name"]) != ""  && trim($_POST["lastname"]) != "" && trim($_POST["phone"]) != "" && trim($_POST["email"]) != "")
 {
@@ -22,7 +43,7 @@ if(trim($_POST["rut"]) != "" && trim($_POST["name"]) != ""  && trim($_POST["last
   }
   else {
     if(!pg_query('INSERT INTO usuarios (usu_rut, usu_nombre, usu_apellido, usu_telefono, usu_correo) VALUES (\''.$rut.'\',\''.$nombre.'\',\''.$apellido.'\',\''.$phone.'\',\''.$email.'\')')){
-      echo "error";
+      echo "error sql";
     }else {
 
       $consul = pg_query('SELECT usu_id FROM usuarios ORDER BY usu_id DESC LIMIT 1');
