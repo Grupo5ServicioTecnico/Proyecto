@@ -29,7 +29,10 @@ $cnx = pg_connect($db) or die ('connection failed'. pg_last_error());
 session_start();
 
 
-
+/**
+* Obtiene los valores de la pagina
+* Crea las variables para la proxima utilizacion
+*/
 if(trim($_POST["rut"]) != "" && trim($_POST["name"]) != ""  && trim($_POST["lastname"]) != "" && trim($_POST["phone"]) != "" && trim($_POST["email"]) != "")
 {
   $rut = $_POST['rut'];
@@ -38,13 +41,25 @@ if(trim($_POST["rut"]) != "" && trim($_POST["name"]) != ""  && trim($_POST["last
   $phone = $_POST['phone'];
   $email = $_POST['email'];
   $result = pg_query('SELECT usu_rut FROM usuarios WHERE usu_rut = \''.$rut.'\'');
+
+  /**
+  * Verifica que el nuevo usuario no este ingresado previamente en la base de datos, si esta, manda un mensaje
+  */
   if (pg_num_rows($result)>0) {
     echo "El usuario ya existe";
   }
   else {
+
+    /**
+    * Ingresa el usuario a la base de datos, indica si la cosulta esta correcta
+    */
     if(!pg_query('INSERT INTO usuarios (usu_rut, usu_nombre, usu_apellido, usu_telefono, usu_correo) VALUES (\''.$rut.'\',\''.$nombre.'\',\''.$apellido.'\',\''.$phone.'\',\''.$email.'\')')){
       echo "error sql";
     }else {
+
+      /**
+      * Veriica que el usuario este ingresado correctamente
+      */
 
       $consul = pg_query('SELECT usu_id FROM usuarios ORDER BY usu_id DESC LIMIT 1');
       $registros= pg_num_rows($consul);
@@ -55,11 +70,14 @@ if(trim($_POST["rut"]) != "" && trim($_POST["name"]) != ""  && trim($_POST["last
         'id' => $row["usu_id"],
       );
       }
-      //echo $row["usu_id"];
       pg_query('INSERT INTO clientes (usu_id) VALUES (\''.$row["usu_id"].'\')');
       echo "Usuario registrado";
     }
   }
+
+  /**
+  * Verifica que los campos no esten vacios al ingresarlos a la base de datos
+  */
 }else{
   echo "campos vacios";
 }

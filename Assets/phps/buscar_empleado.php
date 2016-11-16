@@ -1,21 +1,41 @@
 <?php
-// mostramos datos de posobles errores
+/**
+* Este PHP hace una busqueda de los empleados
+*
+* Busca en la base de datos al empleado buscado por rut, para luego retornar sus datos
+*@author Drexx
+*@param Los parametros de busqueda es un string con el rut del empleados
+*@return  Retorna los valores de la tabla empleado correspondientes al rut ingresado
+*/
+
+/**
+* Mostramos datos de posibles errores
+* Cargando los datos de conexion de la base de datos
+* Realizar la conexion a la base de datos
+* inciar la sesion
+*/
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-//cargamos datos de conexion a la base de datos
+
 require_once("config/db.conf.php");
-//realizamos conexion a la base de datos
 $db = "host=$host port=$port dbname=$dbname user=$username password=$password";
 $cnx = pg_connect($db) or die ('connection failed'. pg_last_error());
-//iniciamos sesion
 session_start();
-//importamos datos del cliente
+
+/**
+* Importar los daros del cliente
+* Realizar consulta de busqueda
+* Consultar la cantidad de filas afectadas
+* Pasamos los resultados requeridos a variables
+* Mostramos los datos en la pagina
+*/
+
 $user = htmlentities($_POST["search_empl"], ENT_QUOTES);
-//realizamos consulta de busqueda
+
 $result = pg_query('SELECT * FROM usuarios, empleados, roles  WHERE usuarios.usu_id=empleados.usu_id AND empleados.rol_id= roles.rol_id AND usu_nombre=\''.$user.'\'');
-//consultamos la cantidad de filas afectadas
+
 $registros= pg_num_rows($result);
-//pasamos los resultados requeridos a variables
+
 for ($i=0;$i<$registros;$i++){
   $row = pg_fetch_array ( $result,$i );
   $empl = array(
