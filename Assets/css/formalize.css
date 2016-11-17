@@ -11,6 +11,9 @@ body h2{
   border-style: solid;
   border-width: 2px;
 }
+#cabezera .descripcion{
+  align-items: center;
+}
 /*diseño opciones buscar*/
 #buscar{
   margin-top: 10px;
