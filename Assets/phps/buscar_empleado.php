@@ -32,7 +32,7 @@ session_start();
 
 $user = htmlentities($_POST["search_empl"], ENT_QUOTES);
 
-$result = pg_query('SELECT * FROM usuarios, empleados, roles  WHERE usuarios.usu_id=empleados.usu_id AND empleados.rol_id= roles.rol_id AND usu_nombre=\''.$user.'\'');
+$result = pg_query('SELECT * FROM usuarios, empleados, roles  WHERE usuarios.usu_pk=empleados.usu_fk AND empleados.rol_fk= roles.rol_pk AND usu_nombre=\''.$user.'\'');
 
 $registros= pg_num_rows($result);
 
