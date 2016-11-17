@@ -17,6 +17,7 @@ if(trim($_POST["rut"]) != "" && trim($_POST["name"]) != ""  && trim($_POST["last
   $phone = $_POST['phone'];
   $email = $_POST['email'];
   $password = $_POST['password'];
+  $rol = $_POST['rol'];
   $result = pg_query('SELECT usu_rut FROM empleados, usuarios WHERE empleados.usu_fk=usuarios.usu_pk AND usuarios.usu_rut = \''.$rut.'\'');
   if (pg_num_rows($result)>0) {
     echo "El usuario ya existe";
@@ -36,7 +37,7 @@ if(trim($_POST["rut"]) != "" && trim($_POST["name"]) != ""  && trim($_POST["last
       );
       }
       //echo $row["usu_id"];
-      pg_query('INSERT INTO clientes (usu_id) VALUES (\''.$row["usu_id"].'\')');
+      pg_query('INSERT INTO empleados (emp_contraseña, usu_fk, rol_fk) VALUES (\''.$password.'\', \''.$row["usu_id"].'\',\''.$rol.'\' )');
       echo "Usuario registrado";
     }
   }

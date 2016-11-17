@@ -5,7 +5,7 @@ body{
   position:relative;
   margin: 10px auto;
   width: 500px;
-  height: 380px;
+  height:auto;
   background-color: #fff;
   padding: 10px;
   border-radius: 3px;
@@ -30,7 +30,9 @@ box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
 .u-form-group input[type="name"],
 .u-form-group input[type="lastname"],
 .u-form-group input[type="phone"],
-.u-form-group input[type="email"]{
+.u-form-group input[type="email"],
+.u-form-group input[type="password"],
+.u-form-group select[name="rol"]{
   width: calc(50% - 22px);
   height:45px;
   outline: none;

@@ -55,6 +55,24 @@ if (!isset($_SESSION["k_username"])) {
 		</div>
 	</div>
 	<div class="u-form-group">
+		<label class="title"></label>
+		<div class="item-cont">
+			<input class="large" type="password" name="password" value="" placeholder="Password"required=""/>
+			<span class="icon-place"></span>
+		</div>
+	</div>
+	<div class="u-form-group">
+		<label class="title"></label>
+		<div class="item-cont">
+			<select required="" class="large" name="rol">
+			  <option value="2" selected="">Empleado/a</option>
+			  <option value="1">Administrador/a</option>
+			  <option value="3">Secretario/a</option>
+			</select>
+			<span class="icon-place"></span>
+		</div>
+	</div>
+	<div class="u-form-group">
 		<input type="submit"name="enviar" value="Ingresar"/>
 	</div>
 </form>
