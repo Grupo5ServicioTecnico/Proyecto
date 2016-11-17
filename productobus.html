@@ -21,18 +21,54 @@
 					</td>
 	    </tr>
 		</table>
-		<hr width=100%></hr>
+		<hr width=100% align="left"></hr>
 		<table align="center">
-	    <tr>
+			<tr>
 				<td>
 					<div class="button">
-						<button type="button" id="add" name="button2" onclick="location.href='Assets/phps/producto_add.php'"/>
-						<img src="Assets/images/Add.png"><b> Agregar</b></button>
-		    	</td>
+						<button type="button" id="add" name="button2" onclick="location.href='Assets/phps/cliente_add.php'">
+					  <img src="Assets/images/Add.png">
+						<b> Agregar</b></button>
+					</div>
+				</td>
+				<td>
+					<div class="button">
+						<button type="button" id="update" name="button2" onclick="#">
+						<img src="Assets/images/Add.png">
+						<b> Modificar</b></button>
+					</div>
+				</td>
+				<td>
+					<div class="button">
+						<button type="button" id="delete" name="button2" onclick="#">
+						<img src="Assets/images/Add.png">
+						<b> Eliminar</b></button>
 					</div>
 				</td>
 			</tr>
 		</table>
+	</div>
+	<div class="centro" heigth="50%">
+	<table id="opciones" border="1"width="100%" >
+		<thead>
+			<tr>
+				<th>Rut Cliente</th>
+				<th>Nombre Cliente</th>
+				<th>Estado Producto</th>
+				<th>Serie Producto</th>
+				<th>Fecha Ingreso</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td id="td-rut"></td>
+				<td id="td-nombre"></td>
+				<td id="td-estado"></td>
+				<td id="td-serie"></td>
+				<td id="td-fechaIng"></td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 </body>
 </html>
