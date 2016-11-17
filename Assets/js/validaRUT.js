@@ -1,12 +1,3 @@
-function dv(T) {
-    var M=0,S=1;
-    for(;T;T=Math.floor(T/10))
-      S=(S+T%10*(9-M++%6))%11;
-    console.log(S?S-1:'k');
-    return S?S-1:'k';
-
-  }
-
 function checkRut(rut) {
     // Despejar Puntos
     var valor = rut.replace('.','');
@@ -49,9 +40,7 @@ function checkRut(rut) {
     dv = (dv == 0)?11:dv;
 
     // Validar que el Cuerpo coincide con su Dígito Verificador
-    if(dvEsperado != dv) { console.log();("RUT Inválido"); return false; }
+    if(dvEsperado != dv) { console.log();alert("RUT Inválido"); ("rut correcto"); }
 
-    // Si todo sale bien, eliminar errores (decretar que es válido)
-   console.log("valido");
 
 }

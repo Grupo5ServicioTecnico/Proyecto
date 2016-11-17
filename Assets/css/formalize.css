@@ -94,3 +94,18 @@ body h2{
 #formulario{
   align-items: center;
 }
+#formulario input{
+  margin-top: 10px;
+}
+#formulario button{
+  background-color: #eeeeee;
+  margin-top: 10px;
+}
+#formulario button:hover{
+  background-color: #333333;
+  color: #ffffff;
+}
+#formulario img{
+  width: 20px;
+  height: 20px;
+}

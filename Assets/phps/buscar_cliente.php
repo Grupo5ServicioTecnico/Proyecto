@@ -5,7 +5,7 @@
 * En este php se hace una consulta en la tabla clientes, por medio del rut
 * para buscar a un cliente especifico
 *@author Drexx
-*@param Busca en la base de datos con el rut de del usuario
+*@param Busca en la base de datos con el rut del usuario
 *@return Retorna todos los valores pertenecientes a la tabla que coincidan
 *         con el pk del rut buscado
 */
