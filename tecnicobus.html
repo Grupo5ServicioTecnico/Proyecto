@@ -89,13 +89,25 @@
 		$( document ).ready(function() {
 			$('#search').click(function(event){
 				var empl = $("#search_empl").val();
-				$.ajax({
-				  method: "POST",
+				$.post( "Assets/phps/buscar_empleado.php", { "search_empl": empl}, function( data ) {
+				  console.log( "data!! -> ", data );
+					console.log(data.length);
+					json = JSON.parse(data);
+					$("#td-id").text(json.id)
+					$("#td-rut").text(json.rut)
+					$("#td-nombre").text(json.nombre)
+					$("#td-apellido").text(json.apellido)
+					$("#td-celular").text(json.telefono)
+					$("#td-correo").text(json.correo)
+					$("#td-rol").text(json.cargo)
+				});
+				/*$.ajax({
+				  type: "POST",
 				  url: "Assets/phps/buscar_empleado.php",
 					dataType: 'json',
 				  data: { search_empl: empl }
 				}).done(function( msg ) {
-				    console.log(msg.id );
+
 						$("#td-id").text(msg.id)
 						$("#td-rut").text(msg.rut)
 						$("#td-nombre").text(msg.nombre)
@@ -103,7 +115,7 @@
 						$("#td-celular").text(msg.telefono)
 						$("#td-correo").text(msg.correo)
 						$("#td-rol").text(msg.cargo)
-				  });
+				  });*/
 			})
 		});
 		</script>
