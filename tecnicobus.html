@@ -1,110 +1,111 @@
 <!DOCTYPE html>
 <html>
-<head>
-		<title>Buscar Empleado</title>
-	<!--Cargamos los css -->
-	<link rel="stylesheet" href="Assets/css/formalize.css">
-</head>
-<body>
-	<!--Cargamos la barra de navegacion-->
+	<head>
+		<!--Dentro del HEAD argamos css y nombramos pagina -->
+		<title>Empleado</title>
+		<link rel="stylesheet" href="Assets/css/formalize.css">
+	</head>
+	<body>
+		<!--Cargamos barra de vinculos -->
 		<object  data="barra.html" width="100%" height="50px" border="2px">
 		</object>
-	<!--div que contiene la cabezera de las opciones -->
-	<div id="cabezera">
-		<!--Tabla que contiene la opcion de busqueda -->
-		<table id="buscar"align="center">
-			<tr>
-					<td><p><b>Buscar Empleado</b></p></td>
-					<td><input id="search_empl" type="text" name="search_empl"/></td>
-					<td>
-						<!--div de class button-->
-						<div class="button">
-							<button type="button" id="search" name="button">
-								<img src="Assets/images/buscar.png">
-								<b>Buscar</b></button>
-						</div>
-					</td>
-			</tr>
-		</table>
-		<!--hr muestra una linea horizontal-->
-		<hr width=100% align="left"></hr>
-		<!--Tabla que contiene las opciones de agregar, actualizar y borrar -->
-		<table id="opciones" align="center">
-			<tr>
-				<td>
-					<div class="button">
-						<button type="button" id="add" name="button2" onclick="location.href='Assets/phps/tecnico_add.php'">
-						<img src="Assets/images/Add.png"><b> Agregar</b>
-						</button>
-					</div>
-				</td>
-				<td>
-					<div class="button">
-						<button type="button" id="update" name="button3" onclick="location.href='Assets/phps/cliente_add.php'">
-						<img src="Assets/images/Add.png"><b> Actualizar</b>
-						</button>
-					</div>
-				</td>
-				<td>
-					<div class="button">
-						<button type="button" id="delete" name="button4" onclick="location.href='Assets/phps/cliente_add.php'">
-						<img src="Assets/images/Add.png"><b> Eliminar</b>
-						</button>
-					</div>
-				</td>
-			</tr>
-		</table>
-	</div>
-	<div class="centro">
-		<table border="1"width="100%" >
-			<thead>
-				<tr>
-					<th>Id</th>
-					<th>Rut</th>
-					<th>Nombre</th>
-					<th>Apellido</th>
-					<th>Celular</th>
-					<th>correo</th>
-					<th>Cargo</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td id="td-id"></td>
-					<td id="td-rut"></td>
-					<td id="td-nombre"></td>
-					<td id="td-apellido"></td>
-					<td id="td-celular"></td>
-					<td id="td-correo"></td>
-					<td id="td-rol"></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<script type="text/javascript" src="Assets/js/jquery-1.12.4.min.js">
-	</script>
-	<script type="text/javascript">
-	$( document ).ready(function() {
-		$('#search').click(function(event){
-			var empl = $("#search_empl").val();
-			$.ajax({
-			  method: "POST",
-			  url: "Assets/phps/buscar_empleado.php",
-				dataType: 'json',
-			  data: { search_empl: empl }
-			}).done(function( msg ) {
-			    console.log(msg.id );
-					$("#td-id").text(msg.id)
-					$("#td-rut").text(msg.rut)
-					$("#td-nombre").text(msg.nombre)
-					$("#td-apellido").text(msg.apellido)
-					$("#td-celular").text(msg.telefono)
-					$("#td-correo").text(msg.correo)
-					$("#td-rol").text(msg.cargo)
-			  });
-		})
-	});
-	</script>
-
-</body>
+		<!--Cabezera - Contiene Busqueda y Opciones -->
+		<div id="cabezera">
+			<!--Busqueda -->
+			<div id="buscar" align="center">
+				<table>
+					<tr>
+						<td>
+							<p><b>Buscar Empleado</b></p>
+						</td>
+						<td>
+							<input id="search_empl" type="text" name="search_empl" placeholder="Ej: 11111111-1">
+						</td>
+						<td>
+							<button type="button" id="search">
+								<img src="Assets/images/buscar.png"><b> Buscar</b>
+							</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<!--Division entre Busqueda y Opciones -->
+			<hr width=100% align="left"></hr>
+			<!--Opciones -->
+			<div id="opciones" align="center">
+				<table>
+					<tr>
+						<td><!--Opcion agregar -->
+							<button type="button" id="add" name="add" onclick="location.href='Assets/phps/tecnico_add.php'">
+								<img src="Assets/images/Add.png"><b> Agregar</b>
+							</button>
+						</td>
+						<td><!--Opcion modificar -->
+							<button type="button" id="update" name="update">
+								<img src="Assets/images/Add.png"><b> Modificar</b>
+							</button>
+						</td>
+						<td><!--Opcion reset -->
+							<button type="button" id="reset" name="reset">
+								<img src="Assets/images/Add.png"><b> Limpiar</b>
+							</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<!-- Mostrar - Se muestran los resultados de la busqueda-->
+		<div id="mostrar">
+			<table border="1"width="100%" >
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Rut</th>
+						<th>Nombre</th>
+						<th>Apellido</th>
+						<th>Celular</th>
+						<th>correo</th>
+						<th>Cargo</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td id="td-id"></td>
+						<td id="td-rut"></td>
+						<td id="td-nombre"></td>
+						<td id="td-apellido"></td>
+						<td id="td-celular"></td>
+						<td id="td-correo"></td>
+						<td id="td-rol"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!--Carga de script jquery-->
+		<script type="text/javascript" src="Assets/js/jquery-1.12.4.min.js">
+		</script>
+		<!--Script de llenado de resultados-->
+		<script type="text/javascript">
+		$( document ).ready(function() {
+			$('#search').click(function(event){
+				var empl = $("#search_empl").val();
+				$.ajax({
+				  method: "POST",
+				  url: "Assets/phps/buscar_empleado.php",
+					dataType: 'json',
+				  data: { search_empl: empl }
+				}).done(function( msg ) {
+				    console.log(msg.id );
+						$("#td-id").text(msg.id)
+						$("#td-rut").text(msg.rut)
+						$("#td-nombre").text(msg.nombre)
+						$("#td-apellido").text(msg.apellido)
+						$("#td-celular").text(msg.telefono)
+						$("#td-correo").text(msg.correo)
+						$("#td-rol").text(msg.cargo)
+				  });
+			})
+		});
+		</script>
+	</body>
 </html>
