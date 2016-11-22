@@ -61,7 +61,7 @@ if(trim($_POST["rut"]) != "" && trim($_POST["name"]) != ""  && trim($_POST["last
       * Veriica que el usuario este ingresado correctamente
       */
 
-      $consul = pg_query('SELECT usu_id FROM usuarios ORDER BY usu_id DESC LIMIT 1');
+      $consul = pg_query('SELECT usu_pk FROM usuarios ORDER BY usu_pk DESC LIMIT 1');
       $registros= pg_num_rows($consul);
      for ($i=0;$i<$registros;$i++)
      {

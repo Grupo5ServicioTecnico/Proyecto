@@ -35,7 +35,7 @@ if (!isset($_SESSION["k_username"])) {
 	<OBJECT  data="../../barra.html" width="100%" height="50px" border="2px">
 	</object>
 	<div id="cabezera">
-		<form align="center" action="cliente_add2.php" method="post">
+		<form align="center">
 			<h2>Ingreso Cliente </h2>
 			<hr width=100% align="left"></hr>
 			<!--Div con formulario de ingreso de datos -->
@@ -53,5 +53,28 @@ if (!isset($_SESSION["k_username"])) {
 		</script>
 		<script src="../js/validaRUT.js"></script>
 		<p class="frmd">
+		<script type="text/javascript">
+    $( document ).ready(function() {
+      $('#search').click(function(event){
+				var rut = $("#rut").val();
+				var name = $("#name").val();
+				var lastname = $("#lastname").val();
+				var phone = $("#phone").val();
+        var email = $("#email").val();
+        $.post( "Assets/phps/cliente_add2.php", { "rut":rut,"name":name,"lastname":lastname,"phone":phone,"email": user}, function( data ) {
+          console.log(data);
+          if (data == "El usuario ya existe") {
+						alert("Usuario ya existe");
+          }else if (data == "error sql" ) {
+            alert("Error SQL");
+          }else if (data == "Usuario registrado") {
+            alert("Usuario registrado");
+          }else {
+            alert("Campo/s Vacios");
+          }
+        });
+      })
+    });
+    </script>
 	</body>
 </html>
