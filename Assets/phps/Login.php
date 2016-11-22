@@ -20,12 +20,12 @@ if(trim($_POST["email"]) != "" && trim($_POST["password"]) != "")
     if($row["emp_contraseña"] == $password){
         //asignamos en nombre de usuario por su correo y redireccionamos
         $_SESSION["k_username"] = $row['usu_correo'];
-        header('Location: ../../inicio.html');
+        echo "Usuario correcto";
     }else{
-        echo 'Password incorrecto';
+        echo "Password incorrecto";
     }
   }else{
-        echo 'Usuario no existente en la base de datos';
+    echo "Usuario no existente en la base de datos";
   }
   pg_free_result($result);
   }else{
