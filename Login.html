@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <title>Inicio de Sesion</title>
     <link rel="stylesheet" href="Assets/css/formalize.css">
+    <link rel="icon" type="image/png" href="Assets/images/icono.png" />
   </head>
   <body>
     <!--Se define el formato de inicio de sesion-->
     <div id="cabezera" align="center">
       <div id="formulario">
         <label>Login</label><br>
-        <input id="email"    type="email"    placeholder="Email"    required autocomplete="off" required><br>
-        <input id="password" type="password" placeholder="Password" required autocomplete="off" required><br>
+        <input id="email"    type="email"    placeholder="Email"    required autocomplete="off" required/><br>
+        <input id="password" type="password" placeholder="Password" required autocomplete="off" required/><br>
         <button id="search" type="submit">Login</button>
       </div>
     </div>
@@ -24,7 +25,6 @@
         var password = $("#password").val();
         $.post( "Assets/phps/Login.php", { "email": user, "password": password}, function( data ) {
           console.log(data);
-          //json = JSON.parse(data);
           if (data == "Usuario correcto") {
             console.log(data);
             window.location.href="inicio.html";
