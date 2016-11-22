@@ -118,6 +118,9 @@ body h2{
 #formulario input{
   margin-top: 10px;
 }
+#formulario select{
+  margin-top: 10px;
+}
 #formulario button{
   background-color: #eeeeee;
   margin-top: 10px;
