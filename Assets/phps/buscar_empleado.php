@@ -57,5 +57,4 @@ if(isset($_REQUEST['search_empl'])) {
     pg_free_result($result);
     pg_close();
 } else
-
 ?>

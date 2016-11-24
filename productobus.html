@@ -15,45 +15,23 @@
 		<div id="cabezera">
 			<!--Busqueda  -->
 			<div id="buscar" align="center">
-				<table>
-					<tr>
-		        <td>
-							<p><b>Buscar Producto</b></p>
-						</td>
-		        <td>
-							<input type="text" name="search_product" placeholder="Por rut cliente ej.11 111 111-1">
-						</td>
-						<td>
-							<button type="button" id="search">
-								<img name="image" src="Assets/images/buscar.png"><b> Buscar</b>
-							</button>
-						</td>
-		    	</tr>
-				</table>
+				<h3>Buscar Producto</h3>
+				<input id="search_product" type="text" name="search_product" placeholder="Por rut cliente ej.11 111 111-1">
+				<button type="button" id="search">
+					<img name="image" src="Assets/images/buscar.png"><b> Buscar</b>
+				</button>
 			</div>
-			<!--Division entre Busqueda y Opciones -->
-			<hr width=100% align="left"></hr>
 			<!--Opciones -->
 			<div id="opciones" align="center">
-				<table>
-					<tr><!--Opcion agregar -->
-						<td>
-							<button type="button" id="add" name="add" onclick="location.href='Assets/phps/producto_add.php'">
-						  	<img src="Assets/images/Add.png"><b> Agregar</b>
-							</button>
-						</td>
-						<td><!--Opcion Modificar -->
-							<button type="button" id="update" name="update" onclick="#">
-								<img src="Assets/images/Add.png"><b> Modificar</b>
-							</button>
-						</td>
-						<td><!--Opcion reset -->
-							<button type="button" id="reset" name="reset" onclick="#">
-								<img src="Assets/images/Add.png"><b> Limpiar</b>
-							</button>
-						</td>
-					</tr>
-				</table>
+				<button type="button" id="add" name="add" onclick="location.href='Assets/phps/producto_add.php'">
+			  	<img src="Assets/images/Add.png"><b> Agregar</b>
+				</button>
+				<button type="button" id="update" name="update" onclick="#">
+					<img src="Assets/images/Add.png"><b> Modificar</b>
+				</button>
+				<button type="button" id="reset" name="reset" onclick="location.href='productobus.html'">
+					<img src="Assets/images/Add.png"><b> Limpiar</b>
+				</button>
 			</div>
 		</div>
 		<!-- Mostrar - Se muestran los resultados de la busqueda-->
@@ -74,10 +52,55 @@
 						<td id="td-nombre"></td>
 						<td id="td-estado"></td>
 						<td id="td-serie"></td>
-						<td id="td-fechaIng"></td>
+						<td id="td-fecha"></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
+		<!--Carga de script jquery-->
+		<script type="text/javascript" src="Assets/js/jquery-1.12.4.min.js">
+		</script>
+		<!--Script de llenado de resultados-->
+		<script type="text/javascript">
+		$( document ).ready(function() {
+			$('#search').click(function(event){
+				var product = $("#search_product").val();
+				$.post( "Assets/phps/buscar_producto.php", { "search_product": product}, function( data ) {
+					console.log( "data!! -> ", data );
+					if (data == "no") {
+						alert("Rut no encontrado");
+					}else {
+						json = JSON.parse(data);
+						$("#td-rut").text(json.rut)
+						$("#td-nombre").text(json.nombre)
+						$("#td-estado").text(json.estado)
+						$("#td-serie").text(json.serie)
+						$("#td-fecha").text(json.fecha)
+					}
+				});
+			})
+		});
+		</script>
+		<!--Bloqueo de letras-->
+		<script type="text/javascript">
+			function validar(e) {
+				tecla = (document.all) ? e.keyCode : e.which;
+				if (tecla==8) return true; //Tecla de retroceso (para poder borrar)
+				if (tecla==45) return true; //-
+				if (tecla==48) return true;
+				if (tecla==49) return true;
+				if (tecla==50) return true;
+				if (tecla==51) return true;
+				if (tecla==52) return true;
+				if (tecla==53) return true;
+				if (tecla==54) return true;
+				if (tecla==55) return true;
+				if (tecla==56) return true;
+				if (tecla==57) return true;
+				patron = /1/; //ver nota
+				te = String.fromCharCode(tecla);
+				return patron.test(te);
+			}
+		</script>
 	</body>
 </html>
