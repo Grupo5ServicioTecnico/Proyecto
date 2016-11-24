@@ -6,25 +6,28 @@ if (!isset($_SESSION["k_username"])) {
 }
 ?>
 <html>
+	<!--Dentro del HEAD argamos css y nombramos pagina -->
 	<head>
 		<meta charset="utf-8" />
 		<title>Ingreso Cliente</title>
 		<link rel="stylesheet" href="../css/formalize.css">
+		<link rel="stylesheet" href="../css/formulario.css">
+		<link rel="icon" type="image/png" href="../images/favicon/favicon.png"/>
+
 	</head>
 	<body>
 		<OBJECT  data="../../barra.html" width="100%" height="50px" border="2px">
 		</object>
 		<div id="cabezera">
-			<form id="formulario" align="center" action="cliente_add2.php" method="post">
-				<h2>Ingreso Tecnico </h2>
-				<hr width=100% align="left"></hr>
-				<input type="rut"      name="rut"      placeholder="RUT"        required size="20" min="12" max="12"  oninput="checkRut(this)" /><br>
-				<input type="name"     name="name"     placeholder="Name First" required size="20"  /><br>
-				<input type="lastname" name="lastname" placeholder="Name Last"  required size="20"  /><br>
-				<input type="phone"    name="phone"    placeholder="Phone"      required size="20" maxlength="12" /><br>
-				<input type="email"    name="email"    placeholder="Email"      required/><br>
-				<input type="password" name="password" placeholder="Password"   required/><br>
-				<select required="" style="width:18.5% ; margin-top:10px" name="rol">
+			<form id="formulario" action="cliente_add2.php" method="post">
+				<h3>Ingreso Tecnico </h3>
+				<input type="rut"      name="rut"      placeholder="RUT"                     required autocomplete="off" maxlength="10" onblur="checkRut(this.value)"  onkeypress="return validar(event)"  />
+				<input type="name"     name="name"     placeholder="Nombre"                  required autocomplete="off"/>
+				<input type="lastname" name="lastname" placeholder="Apellido"                required autocomplete="off" />
+				<input type="phone"    name="phone"    placeholder="Celular ej:+56911111111" required autocomplete="off" maxlength="12" />
+				<input type="email"    name="email"    placeholder="Correo"                  required autocomplete="off"/>
+				<input type="password" name="password" placeholder="Contraseña"              required autocomplete="off"/>
+				<select required="" name="rol">
 				  <option value="2" selected="">Empleado/a     </option>
 				  <option value="1"            >Administrador/a</option>
 				  <option value="3"            >Secretario/a   </option>
@@ -33,8 +36,32 @@ if (!isset($_SESSION["k_username"])) {
 				</button>
 			</form>
 		</div>
-		<script type="text/javascript" src="Assets/js/jquery-1.12.4.min.js"></script>
-		<script>src="../js/validarRUT.js"</script>
+		<!--SCRIPTS-->
+		<!--Cargamos jquery-->
+		<script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+		<!--Validacion de rut-->
+		<script src="../js/validaRUT.js"></script>
 		<p class="frmd">
+		<!--Bloqueo de letras-->
+		<script type="text/javascript">
+			function validar(e) {
+				tecla = (document.all) ? e.keyCode : e.which;
+				if (tecla==8) return true; //Tecla de retroceso (para poder borrar)
+				if (tecla==45) return true; //-
+				if (tecla==48) return true;
+				if (tecla==49) return true;
+				if (tecla==50) return true;
+				if (tecla==51) return true;
+				if (tecla==52) return true;
+				if (tecla==53) return true;
+				if (tecla==54) return true;
+				if (tecla==55) return true;
+				if (tecla==56) return true;
+				if (tecla==57) return true;
+				patron = /1/; //ver nota
+				te = String.fromCharCode(tecla);
+				return patron.test(te);
+			}
+		</script>
 	</body>
 </html>

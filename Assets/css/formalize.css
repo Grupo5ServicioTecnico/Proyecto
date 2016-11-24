@@ -15,94 +15,64 @@ body h2{
 #cabezera .descripcion{
   align-items: center;
 }
-/*Diseño Buscar*/
-#buscar{
-  margin-top: 10px;
+#cabezera h3{
+  position:relative;
+  color: #00415d;
+  margin: 10px 5px 10px 5px;
+  padding-bottom:10px;
+  border-bottom: 1px solid #eee;
+  text-align:center;
+  height:28px;
 }
-#buscar p{
-  color: black;
-  text-transform: capitalize;
+#cabezera button{
+  position: relative;
+  width:15%;
+  background-color: #1CB94E;
+  border: 1px solid black;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 14px 0;
+  border-radius: 2px;
+  text-transform: uppercase;
 }
-#buscar input{
-  margin-left: 10px;
-  border-color: black;
-  border-width: 2px;
+#cabezera button:hover{
+  background-color: #333333;
+  color: #ffffff;
 }
-#buscar button img{
-  width: 20px;
-  height: 20px;
-}
-/* Diseño boton search*/
-#search{
-  width: 100px;
-  margin-left: 10px;
-  background-color:#AAEEE1;
-  border-color: black;
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 15px;
-}
-#search b{
+#cabezera button b{
   vertical-align: 30%;
 }
-/*Diseño Opciones*/
-#opciones{
-  margin-top: 10px;
+#cabezera input{
+  position: relative;
+  vertical-align: 35%;
+  width:20%;
+  height:50px;
+  outline: none;
+  border: 1px solid #ddd;
+  padding: 0 10px;
+  border-radius: 2px;
+  color: #333;
+  font-size:0.8rem;
+}
+#cabezera input:focus{
+  border-color: #358efb;
+}
+#buscar{
   margin-bottom: 10px;
 }
-.centro{
-  background-color: white;
-  margin-top: 10px;
-}
-/*Diseño Boton Agregar*/
-#add{
-  width: 100px;
-  background-color:#AAEEE1;
-  border-color: black;
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 15px;
-}
-#add img{
+#buscar img{
   width: 20px;
   height: 20px;
 }
-#add b{
-  vertical-align: 30%;
+#opciones{
+  margin-bottom: 10px;
 }
-/*DIseño Boton Modificar*/
-#update{
-  width: 100px;
-  background-color:#AAEEE1;
-  border-color: black;
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 15px;
-}
-#update img{
+#opciones img{
   width: 20px;
   height: 20px;
 }
-#update b{
-  vertical-align: 30%;
-}
-/*Diseño boton Reset*/
-#reset{
-  width: 100px;
-  background-color:#AAEEE1;
-  border-color: black;
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 15px;
-}
-#reset img{
-  width: 20px;
-  height: 20px;
-}
-#reset b{
-  vertical-align: 30%;
-}
-/*Diseño Mostrar*/
 #mostrar{
   width: 100%;
   background-color: white;
@@ -110,26 +80,4 @@ body h2{
   border-color: black;
   border-style: solid;
   border-width: 2px;
-}
-/*Diseño Formulario*/
-#formulario{
-  align-items: center;
-}
-#formulario input{
-
-}
-#formulario select{
-  margin-top: 10px;
-}
-#formulario button{
-  background-color: #eeeeee;
-  margin-top: 10px;
-}
-#formulario button:hover{
-  background-color: #333333;
-  color: #ffffff;
-}
-#formulario img{
-  width: 20px;
-  height: 20px;
 }

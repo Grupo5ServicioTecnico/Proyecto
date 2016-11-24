@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html>
+  <!--Dentro del HEAD argamos css y nombramos pagina -->
   <head>
     <meta charset="UTF-8">
     <title>Inicio de Sesion</title>
     <link rel="stylesheet" href="Assets/css/formalize.css">
+    <link rel="stylesheet" href="Assets/css/formulario.css">
     <link rel="icon" type="image/png" href="Assets/images/favicon/favicon.png" />
   </head>
   <body>
     <!--Se define el formato de inicio de sesion-->
     <div id="cabezera" align="center">
+      <!-- Formato de ingreso de datos -->
       <div id="formulario">
-        <label>Login</label><br>
-        <input id="email"    type="email"    placeholder="Email"    required autocomplete="off" required/><br>
-        <input id="password" type="password" placeholder="Password" required autocomplete="off" required/><br>
+        <p>login</p>
+        <input id="email"    type="email"    placeholder="Email"    required autocomplete="off" required/>
+        <input id="password" type="password" placeholder="Password" required autocomplete="off" required/>
         <button id="search" type="submit">Login</button>
       </div>
     </div>
-    <script type="text/javascript" src="Assets/js/jquery-1.12.4.min.js">
-    </script>
+    <!--SCRIPTS-->
+    <!--Carga de jquery-->
+    <script type="text/javascript" src="Assets/js/jquery-1.12.4.min.js"></script>
+    <!--Envio de datos a php-->
     <script type="text/javascript">
     $( document ).ready(function() {
       $('#search').click(function(event){

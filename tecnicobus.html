@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
+	<!--Dentro del HEAD argamos css y nombramos pagina -->
 	<head>
-		<!--Dentro del HEAD argamos css y nombramos pagina -->
 		<title>Empleado</title>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="Assets/css/formalize.css">
-		<link rel="icon" type="image/png" href="Assets/images/favicon/favicon.png" />
-
+		<link rel="stylesheet" href="Assets/css/formalize.css"/>
+		<link rel="icon" type="image/png" href="Assets/images/favicon/favicon.png"/>
 	</head>
 	<body>
 		<!--Cargamos barra de vinculos -->
@@ -16,45 +15,23 @@
 		<div id="cabezera">
 			<!--Busqueda -->
 			<div id="buscar" align="center">
-				<table>
-					<tr>
-						<td>
-							<p><b>Buscar Empleado</b></p>
-						</td>
-						<td>
-							<input id="search_empl" type="text" name="search_empl" placeholder="Ej: 11111111-1">
-						</td>
-						<td>
-							<button type="button" id="search">
-								<img src="Assets/images/buscar.png"><b> Buscar</b>
-							</button>
-						</td>
-					</tr>
-				</table>
+				<h3>Buscar Empleado</h3>
+				<input id="search_empl" type="text" name="search_empl" placeholder="Ej: 11111111-1" onkeypress="return validar(event)">
+				<button type="button" id="search">
+					<img src="Assets/images/buscar.png"><b> Buscar</b>
+				</button>
 			</div>
-			<!--Division entre Busqueda y Opciones -->
-			<hr width=100% align="left"></hr>
 			<!--Opciones -->
 			<div id="opciones" align="center">
-				<table>
-					<tr>
-						<td><!--Opcion agregar -->
-							<button type="button" id="add" name="add" onclick="location.href='Assets/phps/tecnico_add.php'">
-								<img src="Assets/images/Add.png"><b> Agregar</b>
-							</button>
-						</td>
-						<td><!--Opcion modificar -->
-							<button type="button" id="update" name="update">
-								<img src="Assets/images/Add.png"><b> Modificar</b>
-							</button>
-						</td>
-						<td><!--Opcion reset -->
-							<button type="button" id="reset" name="reset" onclick="location.href='tecnicobus.html'">
-								<img src="Assets/images/Add.png"><b> Limpiar</b>
-							</button>
-						</td>
-					</tr>
-				</table>
+				<button type="button" id="add" name="add" onclick="location.href='Assets/phps/tecnico_add.php'">
+					<img src="Assets/images/Add.png"><b> Agregar</b>
+				</button>
+				<button type="button" id="update" name="update">
+					<img src="Assets/images/Add.png"><b> Modificar</b>
+				</button>
+				<button type="button" id="reset" name="reset" onclick="location.href='tecnicobus.html'">
+					<img src="Assets/images/Add.png"><b> Limpiar</b>
+				</button>
 			</div>
 		</div>
 		<!-- Mostrar - Se muestran los resultados de la busqueda-->
@@ -94,18 +71,43 @@
 				var empl = $("#search_empl").val();
 				$.post( "Assets/phps/buscar_empleado.php", { "search_empl": empl}, function( data ) {
 				  console.log( "data!! -> ", data );
-					console.log(data.length);
-					json = JSON.parse(data);
-					$("#td-id").text(json.id)
-					$("#td-rut").text(json.rut)
-					$("#td-nombre").text(json.nombre)
-					$("#td-apellido").text(json.apellido)
-					$("#td-celular").text(json.telefono)
-					$("#td-correo").text(json.correo)
-					$("#td-rol").text(json.cargo)
+					if (data == "no") {
+						alert("Rut no encontrado");
+					}else {
+						json = JSON.parse(data);
+						$("#td-id").text(json.id)
+						$("#td-rut").text(json.rut)
+						$("#td-nombre").text(json.nombre)
+						$("#td-apellido").text(json.apellido)
+						$("#td-celular").text(json.telefono)
+						$("#td-correo").text(json.correo)
+						$("#td-rol").text(json.cargo)
+					}
+
 				});
 			})
 		});
+		</script>
+		<!--Bloqueo de letras-->
+		<script type="text/javascript">
+			function validar(e) {
+				tecla = (document.all) ? e.keyCode : e.which;
+				if (tecla==8) return true; //Tecla de retroceso (para poder borrar)
+				if (tecla==45) return true; //-
+				if (tecla==48) return true;
+				if (tecla==49) return true;
+				if (tecla==50) return true;
+				if (tecla==51) return true;
+				if (tecla==52) return true;
+				if (tecla==53) return true;
+				if (tecla==54) return true;
+				if (tecla==55) return true;
+				if (tecla==56) return true;
+				if (tecla==57) return true;
+				patron = /1/; //ver nota
+				te = String.fromCharCode(tecla);
+				return patron.test(te);
+			}
 		</script>
 	</body>
 </html>
