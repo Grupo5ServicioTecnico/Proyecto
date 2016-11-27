@@ -26,10 +26,11 @@ if(isset($_REQUEST['search_product'])) {
     */
 
      $user = htmlentities($_POST["search_product"], ENT_QUOTES);
-
-     $result = pg_query('SELECT res_fecha,usu_nombre,usu_rut,est_nombre,pro_serie FROM recepcion,usuarios,clientes,estado,productos
+     $result = pg_query('SELECT res_fecha,usu_nombre,usu_rut,est_nombre,pro_serie
+            FROM recepcion,usuarios,clientes,estado,productos
              WHERE recepcion.cli_fk=clientes.cli_pk AND clientes.usu_fk=usuarios.usu_pk
-             AND recepcion.est_fk=estado.est_pk AND recepcion.pro_fk= productos.pro_pk AND clientes.usu_fk = usuarios.usu_pk AND usu_rut=\''.$user.'\';');
+             AND recepcion.est_fk=estado.est_pk AND recepcion.pro_fk= productos.pro_pk
+             AND clientes.usu_fk = usuarios.usu_pk AND usu_rut=\''.$user.'\';');
 
      $registros= pg_num_rows($result);
      $product = array();
