@@ -22,6 +22,12 @@ if (!isset($_SESSION["k_username"])) {
 		<!--Cabezera - Contiene Formulario -->
 		<div id="cabezera2">
 			<form id="formulario" action="producto_add2.php" method="post">
+				<!-- Script fecha-->
+				<script id="fecha" type="text/javascript">
+					var d = new Date();
+					console.log(d);
+					document.write(d.getDate(),'/'+(d.getMonth()+1),'/'+d.getFullYear());
+				</script>
 				<h3>Ingreso Producto </h3>
 				<input id="rut"      placeholder="Cliente Ej:11 111 111-1"size="20" type="rut" name="rut" min="12" max="12" required>
 				<div id="msgUsuario"></div>
@@ -58,6 +64,21 @@ if (!isset($_SESSION["k_username"])) {
 							echo "<option  value='".$lista['mar_pk']."'>".$lista['mar_nombre']."</option>";
 				  ?>
 				</select>
+				<!-- Lista de accesorios-->
+				<?php
+					// Consultar la base de datos
+					require_once("config/db.conf.php");
+					$db = "host=$host port=$port dbname=$dbname user=$username password=$password";
+					$cnx = pg_connect($db);
+					$result = pg_query('SELECT pie_pk,pie_nombre FROM piezas');
+					$rows = pg_numrows($result);
+				?>
+				<select name="piezas" multiple="">
+				  <?php
+				 		while($lista=pg_fetch_assoc($result))
+							echo "<option  value='".$lista['pie_pk']."'>".$lista['pie_nombre']."</option>";
+				  ?>
+				</select>
 				<textarea name="condicion" rows="3" cols="30" placeholder="Condicion del equipo" maxlength="99"></textarea>
 				<h6>Estado</h6>
 				<?php
@@ -72,6 +93,23 @@ if (!isset($_SESSION["k_username"])) {
 				  <?php
 				 		while($lista=pg_fetch_assoc($result))
 							echo "<option  value='".$lista['est_pk']."'>".$lista['est_nombre']."</option>";
+				  ?>
+				</select>
+				<h6>Diagnostico</h6>
+				<textarea name="Diagnostico" rows="3" cols="30" maxlength="100" placeholder="Diagnostico"></textarea>
+				<input type="text" name="Empleado" placeholder="Empleado - tomar rut del login">
+				<?php
+					// Consultar la base de datos
+					require_once("config/db.conf.php");
+					$db = "host=$host port=$port dbname=$dbname user=$username password=$password";
+					$cnx = pg_connect($db);
+					$result = pg_query('SELECT sol_pk,sol_nombre FROM solucion');
+					$rows = pg_numrows($result);
+				?>
+				<select name="solucion">
+				  <?php
+				 		while($lista=pg_fetch_assoc($result))
+							echo "<option  value='".$lista['sol_pk']."'>".$lista['sol_nombre']."</option>";
 				  ?>
 				</select>
 			</form>
