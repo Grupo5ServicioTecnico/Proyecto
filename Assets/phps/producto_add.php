@@ -12,30 +12,68 @@ if (!isset($_SESSION["k_username"])) {
 		<meta charset="utf-8" />
 		<title>Ingreso Producto</title>
 		<link rel="stylesheet" href="../css/formalize.css">
+		<link rel="stylesheet" href="../css/formulario.css">
+		<link rel="icon" type="image/png" href="../images/favicon/favicon.png"/>
 	</head>
 	<body>
 		<!--Cargamos barra de vinculos -->
 		<OBJECT  data="../../barra.html" width="100%" height="50px" border="2px">
 		</object>
 		<!--Cabezera - Contiene Formulario -->
-		<div id="cabezera">
-			<form align="center" action="producto_add2.php" method="post">
-				<h2>Ingreso Producto </h2>
-				<table align="center">
-					<tr>
-						<td>
-							<input id="rut" placeholder="Cliente Ej:11 111 111-1"size="20" type="rut" name="rut" min="12" max="12" required>
-						</td>
-						<td>
-							<div id="msgUsuario"></div>
-						</td>
-					</tr>
-					<tr>
-						
-					</tr>
-				</table>
-
-
+		<div id="cabezera2">
+			<form id="formulario" action="producto_add2.php" method="post">
+				<h3>Ingreso Producto </h3>
+				<input id="rut"      placeholder="Cliente Ej:11 111 111-1"size="20" type="rut" name="rut" min="12" max="12" required>
+				<div id="msgUsuario"></div>
+				<input id="rut_empl" placeholder="Empleado - 	tomar rut del login" type="text" name="rut_empl" />
+				<?php
+					// Consultar la base de datos
+					require_once("config/db.conf.php");
+					$db = "host=$host port=$port dbname=$dbname user=$username password=$password";
+					$cnx = pg_connect($db);
+					$result = pg_query('SELECT cat_pk,cat_nombre FROM categorias');
+					$rows = pg_numrows($result);
+				?>
+				<select name="categorias">
+				  <?php
+				 		while($lista=pg_fetch_assoc($result))
+							echo "<option  value='".$lista['cat_pk']."'>".$lista['cat_nombre']."</option>";
+				  ?>
+				</select><br>
+				<h6>Ingresar formulario producto</h6>
+				<input type="text" name="nombreProducto" placeholder="Nombre producto" maxlength="20">
+				<input type="text" name="Descripcion" placeholder="Descripcion Producto" maxlength="50">
+				<input type="text" name="Serie" placeholder="Serie del Producto" maxlength="20">
+				<?php
+					// Consultar la base de datos
+					require_once("config/db.conf.php");
+					$db = "host=$host port=$port dbname=$dbname user=$username password=$password";
+					$cnx = pg_connect($db);
+					$result = pg_query('SELECT mar_pk,mar_nombre FROM marcas');
+					$rows = pg_numrows($result);
+				?>
+				<select name="marcas">
+				  <?php
+				 		while($lista=pg_fetch_assoc($result))
+							echo "<option  value='".$lista['mar_pk']."'>".$lista['mar_nombre']."</option>";
+				  ?>
+				</select>
+				<textarea name="condicion" rows="3" cols="30" placeholder="Condicion del equipo" maxlength="99"></textarea>
+				<h6>Estado</h6>
+				<?php
+					// Consultar la base de datos
+					require_once("config/db.conf.php");
+					$db = "host=$host port=$port dbname=$dbname user=$username password=$password";
+					$cnx = pg_connect($db);
+					$result = pg_query('SELECT est_pk,est_nombre FROM estado');
+					$rows = pg_numrows($result);
+				?>
+				<select name="estado">
+				  <?php
+				 		while($lista=pg_fetch_assoc($result))
+							echo "<option  value='".$lista['est_pk']."'>".$lista['est_nombre']."</option>";
+				  ?>
+				</select>
 			</form>
 		</div>
 		<script type="text/javascript" src="../../Assets/js/jquery-1.12.4.min.js">

@@ -3,7 +3,7 @@
   position:relative;
   margin: 10px auto;
   width: 500px;
-  height: 380px;
+  height: 500px;
   background-color: white;
   padding: 10px;
   border-radius: 3px;
@@ -13,6 +13,77 @@
   font-weight: bold;
   font-size: 25px;
   text-transform:capitalize;
+}
+#cabezera2{
+  position:relative;
+  margin: 10px auto;
+  width: 500px;
+  height: 700px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
+  -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
+  box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
+  font-weight: bold;
+  font-size: 25px;
+  text-transform:capitalize;
+}
+#cabezera2 h3{
+  position:relative;
+  color: #00415d;
+  margin: 10px 5px 10px 5px;
+  padding-bottom:10px;
+  border-bottom: 1px solid #eee;
+  text-align:center;
+  height:28px;
+}
+#cabezera2 h6{
+  position:relative;
+  color: #00415d;
+  margin: 1px 5px 1px 5px;
+  padding-bottom:10px;
+  text-align:center;
+  height:28px;
+}
+#formulario textarea{
+  display: block;
+  align-items: center;
+  width:100%;
+  margin-bottom: 10px;
+  margin-left: calc(30% - 10px);
+  width: calc(50% - 22px);
+  height:45px;
+  outline: none;
+  border: 1px solid #ddd;
+  padding: 0 10px;
+  border-radius: 2px;
+  color: #333;
+  font-size:0.8rem;
+  -webkit-transition:all 0.1s linear;
+  -moz-transition:all 0.1s linear;
+  transition:all 0.1s linear;
+}
+#formulario textarea:focus{
+  border-color: #358efb;
+}
+#formulario select{
+  display: block;
+  align-items: center;
+  width:100%;
+  margin-bottom: 10px;
+  margin-left: calc(30% - 10px);
+  width: calc(50% - 22px);
+  height:45px;
+  outline: none;
+  border: 1px solid #ddd;
+  padding: 0 10px;
+  border-radius: 2px;
+  color: #333;
+  font-size:0.8rem;
+  -webkit-transition:all 0.1s linear;
+  -moz-transition:all 0.1s linear;
+  transition:all 0.1s linear;
 }
 #formulario{
   position:relative;
@@ -32,8 +103,11 @@
   height:28px;
 }
 #formulario input{
+  display: block;
+  align-items: center;
   width:100%;
   margin-bottom: 10px;
+  margin-left: calc(30% - 10px);
   width: calc(50% - 22px);
   height:45px;
   outline: none;
