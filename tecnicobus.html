@@ -16,7 +16,7 @@
 			<!--Busqueda -->
 			<div id="buscar" align="center">
 				<h3>Buscar Empleado</h3>
-				<input id="search_empl" type="text" name="search_empl" placeholder="Ej: 11111111-1" onkeypress="return validar(event)">
+				<input id="search_empl" maxlength="10" type="text" name="search_empl" placeholder="Ej: 11111111-1" onkeypress="return validar(event)">
 				<button type="button" id="search">
 					<img src="Assets/images/buscar.png"><b> Buscar</b>
 				</button>
@@ -26,9 +26,9 @@
 				<button type="button" id="add" name="add" onclick="location.href='Assets/phps/tecnico_add.php'">
 					<img src="Assets/images/Add.png"><b> Agregar</b>
 				</button>
-				<button type="button" id="update" name="update">
+				<!--<button type="button" id="update" name="update">
 					<img src="Assets/images/Add.png"><b> Modificar</b>
-				</button>
+				</button>-->
 				<button type="button" id="reset" name="reset" onclick="location.href='tecnicobus.html'">
 					<img src="Assets/images/Add.png"><b> Limpiar</b>
 				</button>
@@ -36,7 +36,7 @@
 		</div>
 		<!-- Mostrar - Se muestran los resultados de la busqueda-->
 		<div id="mostrar">
-			<table border="1"width="100%" >
+			<table border="1"width="100%">
 				<thead>
 					<tr>
 						<th>Id</th>
@@ -48,7 +48,7 @@
 						<th>Cargo</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody align="center">
 					<tr>
 						<td id="td-id"></td>
 						<td id="td-rut"></td>

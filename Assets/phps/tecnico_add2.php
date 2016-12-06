@@ -20,29 +20,32 @@ if(trim($_POST["rut"]) != "" && trim($_POST["name"]) != ""  && trim($_POST["last
   $rol = $_POST['rol'];
   $result = pg_query('SELECT usu_rut FROM empleados, usuarios WHERE empleados.usu_fk=usuarios.usu_pk AND usuarios.usu_rut = \''.$rut.'\'');
   if (pg_num_rows($result)>0) {
-    echo "El usuario ya existe";
+    echo '<script language="javascript">alert("Usuario Existente");</script>';
+    header('Location: tecnico_add.php');
   }
   else {
     if(!pg_query('INSERT INTO usuarios (usu_rut, usu_nombre, usu_apellido, usu_telefono, usu_correo) VALUES (\''.$rut.'\',\''.$nombre.'\',\''.$apellido.'\',\''.$phone.'\',\''.$email.'\')')){
       echo "error";
     }else {
 
-      $consul = pg_query('SELECT emp_pk FROM empleados ORDER BY emp_pk DESC LIMIT 1');
+      $consul = pg_query('SELECT usu_pk FROM usuarios ORDER BY usu_pk DESC LIMIT 1');
       $registros= pg_num_rows($consul);
      for ($i=0;$i<$registros;$i++)
      {
       $row = pg_fetch_array ( $consul,$i );
       $id = array(
-        'id' => $row["usu_id"],
+        'id' => $row["usu_pk"]
       );
       }
       //echo $row["usu_id"];
-      pg_query('INSERT INTO empleados (emp_contraseña, usu_fk, rol_fk) VALUES (\''.$password.'\', \''.$row["usu_id"].'\',\''.$rol.'\' )');
-      echo "Usuario registrado";
+      pg_query('INSERT INTO empleados (emp_contraseña, usu_fk, rol_fk) VALUES (\''.$password.'\', \''.$row["usu_pk"].'\',\''.$rol.'\' )');
+      echo '<script language="javascript">alert("Usuario Registrado");</script>';
+      header('Location: ../../tecnicobus.html');
     }
   }
 }else{
-  echo "campos vacios";
+  echo '<script language="javascript">alert("Campos Vacios");</script>';
+  header('Location: tecnico_add.php');
 }
 
 ?>

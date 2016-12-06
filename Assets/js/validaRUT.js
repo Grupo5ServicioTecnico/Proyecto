@@ -1,5 +1,6 @@
-function checkRut(rut) {
+function checkRut(rut, id) {
     // Despejar Puntos
+    var id1 = id;
     var valor = rut.replace('.','');
     // Despejar Guión
     valor = valor.replace('-','');
@@ -12,7 +13,8 @@ function checkRut(rut) {
     rut = cuerpo + '-'+ dv
 
     // Si no cumple con el mínimo ej. (n.nnn.nnn)
-    if(cuerpo.length < 7) { rut.setCustomValidity("RUT Incompleto"); return false;}
+    if(cuerpo.length < 7)
+      {alert("RUT Incompleto") ; return false;}
 
     // Calcular Dígito Verificador
     suma = 0;

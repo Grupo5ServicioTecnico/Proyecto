@@ -112,6 +112,8 @@ if (!isset($_SESSION["k_username"])) {
 							echo "<option  value='".$lista['sol_pk']."'>".$lista['sol_nombre']."</option>";
 				  ?>
 				</select>
+				<button type="submit" id="Add"><b> Agregar</b>
+				</button>
 			</form>
 		</div>
 		<script type="text/javascript" src="../../Assets/js/jquery-1.12.4.min.js">

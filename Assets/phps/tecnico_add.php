@@ -13,15 +13,14 @@ if (!isset($_SESSION["k_username"])) {
 		<link rel="stylesheet" href="../css/formalize.css">
 		<link rel="stylesheet" href="../css/formulario.css">
 		<link rel="icon" type="image/png" href="../images/favicon/favicon.png"/>
-
 	</head>
 	<body>
 		<OBJECT  data="../../barra.html" width="100%" height="50px" border="2px">
 		</object>
 		<div id="cabezera">
-			<form id="formulario" action="cliente_add2.php" method="post">
+			<form id="formulario" action="tecnico_add2.php" method="post">
 				<h3>Ingreso Tecnico </h3>
-				<input type="rut"      name="rut"      placeholder="RUT"                     required autocomplete="off" maxlength="10" onblur="checkRut(this.value)"  onkeypress="return validar(event)"  />
+				<input type="rut"      name="rut"      placeholder="RUT"                     required autocomplete="off" maxlength="10" onblur="checkRut(this.value,this.id)"  onkeypress="return validar(event)" id="rut" />
 				<input type="name"     name="name"     placeholder="Nombre"                  required autocomplete="off"/>
 				<input type="lastname" name="lastname" placeholder="Apellido"                required autocomplete="off" />
 				<input type="phone"    name="phone"    placeholder="Celular ej:+56911111111" required autocomplete="off" maxlength="12" />
@@ -41,7 +40,6 @@ if (!isset($_SESSION["k_username"])) {
 		<script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
 		<!--Validacion de rut-->
 		<script src="../js/validaRUT.js"></script>
-		<p class="frmd">
 		<!--Bloqueo de letras-->
 		<script type="text/javascript">
 			function validar(e) {
@@ -63,5 +61,6 @@ if (!isset($_SESSION["k_username"])) {
 				return patron.test(te);
 			}
 		</script>
+		
 	</body>
 </html>
